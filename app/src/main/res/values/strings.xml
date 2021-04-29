@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyEcom</string>
+    <string name="dec">-</string>
+    <string name="zero">0</string>
+    <string name="inc">+</string>
+    <string name="my_counter">My Counter</string>
+    <string name="send_back">send back</string>
+    <string name="explicit_intent">Explicit Intent</string>
+    <string name="implicit_intent_heading">Implicit Intent</string>
+    <string name="open_main_activity_button_label">open main activity</string>
+    <string name="data">Data</string>
+</resources>
