@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //To create layout using layout inflater
         b = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
 
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         getInitialCount();
     }
 
+    /**
+     *Get the data from the starter activity
+     */
     private void getInitialCount(){
         //Get data from intent
         Bundle bundle = getIntent().getExtras();
@@ -40,32 +44,38 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *Trigger Event handlers to listen the actions
+     */
     private void setupEventHandlers() {
-        b.incBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                incQty();
-            }
-
+        b.incBtn.setOnClickListener(v -> {
+            //Calling increase function
+            incQty();
         });
-        b.decBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                decQty();
-            }
+        b.decBtn.setOnClickListener(v -> {
+            //Calling decrease function
+            decQty();
         });
     }
 
-
+    /**
+     *To decrease the quantity and update the result in text view
+     */
     public void decQty() {
         b.qty.setText("" + --qty);
     }
 
-
+    /**
+     *To increase the quantity and update the result in text view
+     */
     public void incQty() {
         b.qty.setText("" + ++qty);
     }
 
+    /**
+     *To send the final count back to main activity
+     *@param view button view which is triggered
+     */
     public void sendDataBack(View view) {
         //Validate count
         if(qty >= minVal && qty <= maxVal){

@@ -25,14 +25,18 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
         setupHideErrorForEditText();
     }
 
-    //Initial setup methods
-
+    /**
+     *Setup layout using root element of UI
+     */
     private void setupLayout() {
         b = ActivityIntentsPlaygroundBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         setTitle("Intents Playground");
     }
 
+    /**
+     *Text Watcher gives callback when the text in the text fields changes
+     */
     private void setupHideErrorForEditText() {
         TextWatcher myTextWatcher = new TextWatcher() {
             @Override
@@ -55,22 +59,28 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
         b.initialCounterEt.getEditText().addTextChangedListener(myTextWatcher);
     }
 
-
-
-    //Event Handlers
-
+    // Event Handlers
+    /**To open main activity and pass the count to the activity
+     *@param view view of the button pressed
+     */
     public void openMainActivity(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /**Sending Implicit Activity
+     *@param view view of the button pressed
+     */
     public void sendImplicitIntent(View view) {
         //Validate data input
         String input = b.data.getEditText().getText().toString().trim();
+
+        // Check that the input data is not empty if it is then return the function
         if(input.isEmpty()){
             b.data.setError("Please enter something!");
             return;
         }
+
         //Validate intent Type
         int type = b.intentTypeRGrp.getCheckedRadioButtonId();
         //Handle implicit intent cases
@@ -85,9 +95,15 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *Sending count data to main activity
+     *@param view view of the button pressed
+     */
     public void sendData(View view) {
         //Validate data input
         String input = b.initialCounterEt.getEditText().getText().toString().trim();
+
+        // Check that the input data is not empty if it is then return the function
         if(input.isEmpty()){
             b.initialCounterEt.setError("Please enter something!");
             return;
@@ -109,6 +125,11 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_COUNT);
     }
 
+    /**
+     *@param requestCode
+     *@param resultCode
+     *@param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -123,6 +144,10 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
     }
 
     //Implicit Intent Sender
+    /**
+     *To share text data using different application
+     *@param text data which is to be send
+     */
 
     private void shareText(String text) {
         Intent intent = new Intent(); intent.setAction(Intent.ACTION_SEND);
@@ -131,6 +156,10 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(intent, "Share text via"));
     }
 
+    /**
+     *Dialing number using the caller application
+     *@param number number to be called
+     */
     private void dialNumber(String number) {
         //Check if input is 10 digit or not
         if(!number.matches("^\\d{10}$")){
@@ -144,6 +173,10 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
         hideError();
     }
 
+    /**
+     * open web page
+     *@param url URL to be opened in the browser
+     */
     private void openWebPage(String url) {
         //Check if input is URL
         if(!url.matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")){
