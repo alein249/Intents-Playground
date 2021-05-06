@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyEcom</string>
+    <string name="app_name">IntentsPlayground</string>
     <string name="dec">-</string>
     <string name="zero">0</string>
     <string name="inc">+</string>

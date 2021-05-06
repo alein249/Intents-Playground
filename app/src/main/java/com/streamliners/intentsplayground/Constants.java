@@ -1,4 +1,4 @@
-package com.streamliners.myecom;
+package com.streamliners.intentsplayground;
 
 public class Constants {
     public static final String INITIAL_COUNT_KEY = "initialCount";

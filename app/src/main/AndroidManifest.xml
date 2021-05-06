@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.streamliners.myecom">
+    package="com.streamliners.intentsplayground">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyEcom">
-        <activity android:name=".IntentsPlaygroundActivity"
+        <activity android:name="com.streamliners.intentsplayground.IntentsPlaygroundActivity"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,8 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:parentActivityName=".IntentsPlaygroundActivity"
+        <activity android:name="com.streamliners.intentsplayground.MainActivity"
+            android:parentActivityName="com.streamliners.intentsplayground.IntentsPlaygroundActivity"
             android:label="Main Activity">
         </activity>
 

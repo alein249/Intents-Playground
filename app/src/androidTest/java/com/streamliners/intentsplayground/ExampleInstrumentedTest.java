@@ -1,4 +1,4 @@
-package com.streamliners.myecom;
+package com.streamliners.intentsplayground;
 
 import android.content.Context;
 

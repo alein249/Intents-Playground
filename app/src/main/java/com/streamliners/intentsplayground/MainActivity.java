@@ -1,4 +1,4 @@
-package com.streamliners.myecom;
+package com.streamliners.intentsplayground;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.streamliners.myecom.databinding.ActivityMainBinding;
+import com.streamliners.intentsplayground.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 

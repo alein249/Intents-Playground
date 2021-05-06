@@ -1,4 +1,4 @@
-package com.streamliners.myecom;
+package com.streamliners.intentsplayground;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
-import com.streamliners.myecom.databinding.ActivityIntentsPlaygroundBinding;
+import com.streamliners.intentsplayground.databinding.ActivityIntentsPlaygroundBinding;
 
 public class IntentsPlaygroundActivity extends AppCompatActivity {
 
@@ -21,6 +21,8 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setupLayout();
         setupHideErrorForEditText();
     }
@@ -64,9 +66,16 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
      *@param view view of the button pressed
      */
     public void openMainActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        b.openMainActivityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(IntentsPlaygroundActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
 
     /**Sending Implicit Activity
      *@param view view of the button pressed
