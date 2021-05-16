@@ -8,8 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyEcom">
-        <activity android:name="com.streamliners.intentsplayground.IntentsPlaygroundActivity"
+        android:theme="@style/Theme.IntentsPlaygroundActivity">
+        <activity android:name=".IntentsPlaygroundActivity"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,9 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.streamliners.intentsplayground.MainActivity"
-            android:parentActivityName="com.streamliners.intentsplayground.IntentsPlaygroundActivity"
-            android:label="Main Activity">
+        <activity android:name=".CounterActivity"
+            android:parentActivityName=".IntentsPlaygroundActivity"
+            android:label="Counter">
         </activity>
 
     </application>

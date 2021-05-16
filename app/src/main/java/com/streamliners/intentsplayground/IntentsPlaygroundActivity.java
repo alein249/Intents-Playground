@@ -1,5 +1,6 @@
 package com.streamliners.intentsplayground;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,12 +19,15 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
     private static final int REQUEST_COUNT = 0;
     ActivityIntentsPlaygroundBinding b;
 
+    boolean resultReceived = false;
+    int finalCount = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         setupLayout();
+        restoreDataFromSavedInstances(savedInstanceState);
         setupHideErrorForEditText();
     }
 
@@ -62,20 +66,14 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
     }
 
     // Event Handlers
-    /**To open main activity and pass the count to the activity
-     *@param view view of the button pressed
+
+    /**
+     * Open main activity by using explicit intent
      */
     public void openMainActivity(View view) {
-        b.openMainActivityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IntentsPlaygroundActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        Intent intent = new Intent(this, CounterActivity.class);
+        startActivity(intent);
     }
-
-
 
     /**Sending Implicit Activity
      *@param view view of the button pressed
@@ -121,7 +119,7 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
         int initialCount = Integer.parseInt(input);
 
         //Create intent
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, CounterActivity.class);
 
         //create bundle to pass
         Bundle bundle = new Bundle();
@@ -146,9 +144,12 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
         if(requestCode == REQUEST_COUNT && resultCode == RESULT_OK){
             //Get data
             int count = data.getIntExtra(Constants.FINAL_COUNT, Integer.MIN_VALUE);
-            //Show data
-            b.result.setText("Final count received : " + count);
-            b.result.setVisibility(View.VISIBLE);
+            // set the final count
+            resultReceived = true;
+            finalCount = count;
+
+            // show the result to the user
+            setResultInTextView(count);
         }
     }
 
@@ -203,6 +204,46 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
 
     private void hideError(){
         b.data.setError(null);
+        b.initialCounterEt.setError(null);
+    }
+
+    /**
+     * to set the result in the text view
+     * @param count final count (result) to be set
+     */
+    private void setResultInTextView(int count) {
+        b.result.setText("Final count received: " + count);
+        b.result.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * to restore the data and update the UI
+     * @param savedInstanceState Bundle of the data
+     */
+    private void restoreDataFromSavedInstances(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            // set the result received value
+            resultReceived = savedInstanceState.getBoolean("ResultReceived", false);
+
+            if (resultReceived) {
+                // set the final count
+                finalCount = savedInstanceState.getInt("FinalCount");
+
+                // display the final count (result)
+                setResultInTextView(finalCount);
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean("ResultReceived", resultReceived);
+
+        // check for the result view
+        if (resultReceived)
+            outState.putInt("FinalCount", finalCount);
     }
 
 
