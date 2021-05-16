@@ -29,4 +29,4 @@ I have made an Intents Playground application
 
 # Download APK from here
 
-[APK](https://github.com/alein249/Intents-Playground/releases/download/intentsplay/app-release.apk)
+[APK](https://github.com/alein249/Intents-Playground/releases/download/latest/app-release.apk)
