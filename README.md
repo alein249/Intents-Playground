@@ -22,6 +22,10 @@ I have made an Intents Playground application
 ![](https://github.com/alein249/Intents-Playground/blob/master/app/src/main/res/drawable/ss8.jpg)
 ![](https://github.com/alein249/Intents-Playground/blob/master/app/src/main/res/drawable/ss9.jpg)
 ![](https://github.com/alein249/Intents-Playground/blob/master/app/src/main/res/drawable/ss10.jpg)
+![](https://github.com/alein249/Intents-Playground/blob/master/app/src/main/res/drawable/ss11.jpg)
+![](https://github.com/alein249/Intents-Playground/blob/master/app/src/main/res/drawable/ss12.jpg)
+![](https://github.com/alein249/Intents-Playground/blob/master/app/src/main/res/drawable/ss13.jpg)
+![](https://github.com/alein249/Intents-Playground/blob/master/app/src/main/res/drawable/ss14.jpg)
 
 # Download APK from here
 
